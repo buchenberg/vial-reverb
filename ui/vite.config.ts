@@ -11,7 +11,7 @@ export default defineConfig(({ command }) => ({
     alias: {
       // Resolve the linked library to its source so dev (HMR) and build always
       // use live source instead of a stale pre-bundled dist.
-      "react-audio-ui": resolve(__dirname, "../../react-audio-ui/src/lib/index.ts"),
+      "mui-audio-ui": resolve(__dirname, "../../mui-audio-ui/src/lib/index.ts"),
     },
     // Force a single copy of these packages even when the linked library's
     // source imports them from its own node_modules. Without this, a second
@@ -32,7 +32,7 @@ export default defineConfig(({ command }) => ({
     ],
   },
   optimizeDeps: {
-    exclude: command === "serve" ? ["react-audio-ui"] : [],
+    exclude: command === "serve" ? ["mui-audio-ui"] : [],
   },
   build: {
     target: "es2020",

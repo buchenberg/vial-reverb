@@ -25,7 +25,6 @@ namespace vial {
   static constexpr float kMinDecayTime = 0.1f;
   static constexpr float kMaxDecayTime = 100.0f;
   static constexpr float kMaxChorusFrequency = 16.0f;
-  static constexpr float kChorusShiftAmount = 0.9f;
   static constexpr float kSampleDelayMultiplier = 0.05f;
   static constexpr float kSampleIncrementMultiplier = 0.05f;
 

@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import Box from "@mui/material/Box";
 import { useSlider } from "../hooks";
 import { PARAM_BY_ID, formatValue } from "../params";
-import { Knob as KnobCore } from "react-audio-ui";
+import { MuiAudioKnob as KnobCore } from "mui-audio-ui";
 
 export interface KnobProps {
   id: string;

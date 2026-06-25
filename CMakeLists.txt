@@ -15,10 +15,6 @@ add_subdirectory("${VIAL_JUCE_DIR}" "${CMAKE_BINARY_DIR}/JUCE")
 set(VIAL_DSP_SOURCES
     src/dsp/vial/framework/utils.cpp
     src/dsp/vial/framework/processor.cpp
-    src/dsp/vial/framework/processor_router.cpp
-    src/dsp/vial/framework/feedback.cpp
-    src/dsp/vial/framework/value.cpp
-    src/dsp/vial/framework/operators.cpp
     src/dsp/vial/effects/reverb.cpp)
 
 # Our DSP wrapper.

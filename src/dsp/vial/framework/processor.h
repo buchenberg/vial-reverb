@@ -25,7 +25,6 @@
 namespace vial {
 
   class Processor;
-  class ProcessorRouter;
 
   struct Output {
     Output(int size = kMaxBufferSize, int max_oversample = 1) {
@@ -250,20 +249,6 @@ namespace vial {
 
       virtual void numInputsChanged() { }
 
-      // Sets the ProcessorRouter that will own this Processor.
-      force_inline void router(ProcessorRouter* router) { router_ = router; VITAL_ASSERT((Processor*)router != this); }
-
-      // Returns the ProcessorRouter that owns this Processor.
-      force_inline ProcessorRouter* router() const { return router_; }
-
-      // Returns the ProcessorRouter that owns this Processor.
-      ProcessorRouter* getTopLevelRouter() const;
-
-      virtual void registerInput(Input* input, int index);
-      virtual Output* registerOutput(Output* output, int index);
-      virtual void registerInput(Input* input);
-      virtual Output* registerOutput(Output* output);
-
       force_inline int numInputs() const { return static_cast<int>(inputs_->size()); }
       force_inline int numOutputs() const { return static_cast<int>(outputs_->size()); }
       force_inline int numOwnedInputs() const { return static_cast<int>(owned_inputs_.size()); }
@@ -303,6 +288,11 @@ namespace vial {
       Output* addOutput(int oversample = 1);
       Input* addInput();
 
+      void registerInput(Input* input);
+      void registerInput(Input* input, int index);
+      Output* registerOutput(Output* output);
+      Output* registerOutput(Output* output, int index);
+
       std::shared_ptr<ProcessorState> state_;
 
       int plugging_start_;
@@ -311,8 +301,6 @@ namespace vial {
 
       std::shared_ptr<std::vector<Input*>> inputs_;
       std::shared_ptr<std::vector<Output*>> outputs_;
-
-      ProcessorRouter* router_;
 
       static const Output null_source_;
 

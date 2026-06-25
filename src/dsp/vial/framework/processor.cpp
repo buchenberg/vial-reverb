@@ -16,9 +16,6 @@
 
 #include "processor.h"
 
-#include "feedback.h"
-#include "processor_router.h"
-
 namespace vial {
 
   const Output Processor::null_source_(kMaxBufferSize, kMaxOversample);
@@ -31,7 +28,6 @@ namespace vial {
 
     inputs_ = std::make_shared<std::vector<Input*>>();
     outputs_ = std::make_shared<std::vector<Output*>>();
-    router_ = nullptr;
 
     for (int i = 0; i < num_inputs; ++i)
       addInput();
@@ -72,8 +68,6 @@ namespace vial {
   }
 
   bool Processor::isPolyphonic() const {
-    if (router_)
-      return router_->isPolyphonic(this);
     return false;
   }
 
@@ -87,10 +81,6 @@ namespace vial {
     VITAL_ASSERT(inputs_->at(input_index));
 
     inputs_->at(input_index)->source = source;
-
-    if (router_)
-      router_->connect(this, source, input_index);
-
     numInputsChanged();
   }
 
@@ -166,9 +156,6 @@ namespace vial {
   }
 
   void Processor::unplug(const Output* source) {
-    if (router_)
-      router_->disconnect(this, source);
-
     for (unsigned int i = 0; i < inputs_->size(); ++i) {
       if (inputs_->at(i) && inputs_->at(i)->source == source)
         inputs_->at(i)->source = &Processor::null_source_;
@@ -177,10 +164,6 @@ namespace vial {
   }
 
   void Processor::unplug(const Processor* source) {
-    if (router_) {
-      for (int i = 0; i < source->numOutputs(); ++i)
-        router_->disconnect(this, source->output(i));
-    }
     for (unsigned int i = 0; i < inputs_->size(); ++i) {
       if (inputs_->at(i) && inputs_->at(i)->source->owner == source)
         inputs_->at(i)->source = &Processor::null_source_;
@@ -188,22 +171,8 @@ namespace vial {
     numInputsChanged();
   }
 
-  ProcessorRouter* Processor::getTopLevelRouter() const {
-    ProcessorRouter* top_level = nullptr;
-    ProcessorRouter* current_level = router_;
-
-    while (current_level) {
-      top_level = current_level;
-      current_level = current_level->router();
-    }
-    return top_level;
-  }
-
   void Processor::registerInput(Input* input) {
     inputs_->push_back(input);
-
-    if (router_ && input->source != &Processor::null_source_)
-      router_->connect(this, input->source, static_cast<int>(inputs_->size()) - 1);
   }
 
   Output* Processor::registerOutput(Output* output) {
@@ -216,9 +185,6 @@ namespace vial {
       inputs_->push_back(nullptr);
 
     inputs_->at(index) = input;
-
-    if (router_ && input->source != &Processor::null_source_)
-      router_->connect(this, input->source, index);
   }
 
   Output* Processor::registerOutput(Output* output, int index) {
