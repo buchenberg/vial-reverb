@@ -1,6 +1,6 @@
 # Vial Reverb
 
-A high-quality algorithmic reverb audio plugin extracted from the [vial synthesizer](https://github.com/kmatheau/vial) (a fork of [Vital](https://vital.audio) by Matt Tytel). This plugin implements a sophisticated reverb algorithm based on a network of 16 allpass filters with feedback delay lines, featuring:
+A high-quality algorithmic reverb audio plugin extracted from the [vial synthesizer](https://github.com/buchenberg/vial) (a fork of [Vital](https://github.com/mtytel/vital) by Matt Tytel). This plugin implements a sophisticated reverb algorithm based on a network of 16 allpass filters with feedback delay lines, featuring:
 
 - 13 continuously variable parameters
 - SIMD-optimized DSP using poly_float (SSE2/NEON)
@@ -37,7 +37,7 @@ A high-quality algorithmic reverb audio plugin extracted from the [vial synthesi
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/vial-reverb.git
+git clone https://github.com/buchenberg/vial-reverb.git
 cd vial-reverb
 ```
 
