@@ -1,0 +1,5 @@
+/* Minimal overrides — MUI handles most styling now */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}

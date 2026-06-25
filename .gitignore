@@ -1,0 +1,175 @@
+# =============================================================================
+# Build artifacts
+# =============================================================================
+build/
+ui/dist/
+
+# =============================================================================
+# C++ / CMake
+# =============================================================================
+# Object files
+*.o
+*.obj
+*.o.d
+
+# Libraries
+*.a
+*.lib
+*.dylib
+*.so
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+InstallScripts.json
+*.cmake
+!CMakeLists.txt
+!cmake/*.cmake
+
+# =============================================================================
+# JUCE
+# =============================================================================
+# Generated BinaryData files
+juce_binarydata_*/
+JuceLibraryCode/
+
+# Plugin bundles
+*.vst3/
+*.component/
+*.app/
+
+# Plugin install targets
+*.vst3
+*.component
+
+# =============================================================================
+# Node.js / npm
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Optional: package lock files (uncomment if you don't want to track them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# =============================================================================
+# macOS
+# =============================================================================
+.DS_Store
+.AppleDouble
+._*
+.Spotlight-V100
+.Trashes
+
+# =============================================================================
+# IDE / Editor
+# =============================================================================
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.ipa
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# CLion / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim
+*.swp
+*.swo
+*~
+.tags
+tags
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# =============================================================================
+# AI Agent directories
+# =============================================================================
+.qwen/
+.cursor/
+.claude/
+.continue/
+.herme/
+.windsurf/
+.copilot/
+.aider/
+.roo/
+.codeium/
+.tabnine/
+.sourcegraph/
+.ghost/
+
+# Hermes Agent local state (if running in project directory)
+.hermes/
+
+# =============================================================================
+# Logs and temporary files
+# =============================================================================
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# =============================================================================
+# Auto-generated files
+# =============================================================================
+# Generated from src/dsp/ReverbParameters.h by scripts/generate_params.js
+# Uncomment to track the generated file instead of regenerating on each build
+# ui/src/params.ts
+
+# =============================================================================
+# Testing / Coverage
+# =============================================================================
+coverage/
+.nyc_output/
+*.lcov
+
+# =============================================================================
+# Environment / Secrets
+# =============================================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# =============================================================================
+# Playwright
+# =============================================================================
+test-results/
+playwright-report/
+blob-report/
+
+
+.cache/
