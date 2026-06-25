@@ -180,5 +180,4 @@ Contributions are welcome! Please open an issue or pull request on GitHub.
 
 ## Known Issues
 
-- The WebView UI is currently a placeholder implementation
-- Some framework code in `src/dsp/vial/framework/` is not directly used by the reverb (see [Unrelated Code Notes](doc/06-unrelated-code.md))
+- Some framework code in `src/dsp/vial/framework/` is not directly used by the reverb (see [Unrelated Code Notes](doc/07-unrelated-code.md))
